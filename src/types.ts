@@ -14,6 +14,13 @@ export type RegisterDraft = {
   version: 1;
 };
 
+/** 재등록 전용 세션 — RegisterDraft와 분리 */
+export type ReRegisterSession = {
+  sourceJobId: string;
+  committed: JobForm;
+  working: JobForm | null;
+};
+
 export type JobRecord = {
   id: string;
   data: JobForm;
