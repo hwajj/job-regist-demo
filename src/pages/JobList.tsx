@@ -3,11 +3,11 @@ import { Link, useNavigate } from 'react-router-dom';
 import { mockApi } from '../mock/api';
 import type { JobRecord } from '../types';
 import { genderLabel } from '../types';
-import { useReRegisterSessionStore } from '../store/reRegisterSession';
+import { useWorkspaceStore } from '../store/workspace';
 
 export function JobListPage() {
   const navigate = useNavigate();
-  const startReRegister = useReRegisterSessionStore((s) => s.start);
+  const startReregister = useWorkspaceStore((s) => s.startReregister);
   const [jobs, setJobs] = useState<JobRecord[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -33,7 +33,7 @@ export function JobListPage() {
     e.stopPropagation();
     e.preventDefault();
     // RegisterDraft는 건드리지 않음 — 재등록 세션만 시작
-    startReRegister(job.id, job.data);
+    startReregister(job.id, job.data);
     navigate(`/reregister/${job.id}`);
   };
 

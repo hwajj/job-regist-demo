@@ -14,18 +14,6 @@ export type RegisterDraft = {
   version: 1;
 };
 
-export type EditSession = {
-  jobId: string;
-  committed: JobForm;
-  working: JobForm | null;
-};
-
-export type ReRegisterSession = {
-  sourceJobId: string;
-  committed: JobForm;
-  working: JobForm | null;
-};
-
 export type JobRecord = {
   id: string;
   data: JobForm;

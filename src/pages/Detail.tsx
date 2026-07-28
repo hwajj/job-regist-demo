@@ -3,12 +3,12 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import { mockApi } from '../mock/api';
 import type { JobRecord } from '../types';
 import { JobSummary } from '../components/JobSummary';
-import { useEditSessionStore } from '../store/editSession';
+import { useWorkspaceStore } from '../store/workspace';
 
 export function DetailPage() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const startEdit = useEditSessionStore((s) => s.start);
+  const startEdit = useWorkspaceStore((s) => s.startEdit);
   const [job, setJob] = useState<JobRecord | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
